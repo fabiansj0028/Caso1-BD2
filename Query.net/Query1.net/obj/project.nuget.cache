@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BF/zt21tNLM8XHAEkashBgtuZa0vv4Ub4/FaAj4BB+2+HTx1SPj6rttJWS6wPxnrjvBAvumbmvlWtyhDal2SiQ==",
+  "dgSpecHash": "jF8oL9fPGmk8n5aZM02lt7Ux3m5utVnF8egSnXoEN1UppLAsa5vNSG9KK/oc5ly4CrKdekNTdgbjUTTHyp82vQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\fabia\\source\\repos\\Query1.net\\Query1.net\\Query1.net.csproj",
+  "projectFilePath": "C:\\Users\\fabia\\Documents\\GitHub\\Caso1-BD2\\Query.net\\Query1.net\\Query1.net.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\fabia\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\fabia\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

@@ -14,32 +14,33 @@ namespace Query1.net
         {
         }
 
-        public void runQuery(int[] array)
+        public void ComenzarQuery(int[] array)
         {
             for (int i = 0; i < 10; i++)
             {
-                Thread hilo = new Thread(() => this.metodo(array[i],i));
-                hilo.Start();
+                Thread hilo = new Thread(Query1.Metodo);
+                hilo.Start(array[i]);
             }
-
         }
 
-        public void metodo(int id, int threadid)
+        public static void Metodo(Object data)
         {
-            SqlConnection conexion = new SqlConnection("Data Source = localhost; Initial Catalog = Aseni; user = sa; password = 1234");
             Stopwatch reloj = new Stopwatch();
             reloj.Start();
+            SqlConnection conexion = new SqlConnection("Data Source = localhost; Initial Catalog = Aseni; user = sa; password = 1234");
+            
             SqlCommand cmd1 = new SqlCommand();
             cmd1.CommandType = CommandType.StoredProcedure;
             cmd1.CommandText = "dbo.getEntregables";
             cmd1.Connection = conexion;
-            cmd1.Parameters.Add("@Canton", SqlDbType.Int).Value = id;
+            cmd1.Parameters.Add("@Canton", SqlDbType.Int).Value = Convert.ToInt32(data);
 
             conexion.Open();
             SqlDataReader reader = cmd1.ExecuteReader();
             while (reader.Read())
             {
-                Console.WriteLine(String.Format("{0}", reader[0]) + " "+
+                Console.WriteLine("Canton: " + Convert.ToInt32(data) + " " +
+                                  String.Format("{0}", reader[0]) + " "+
                                   String.Format("{0}", reader[3])+ " "+
                                   String.Format("{0}", reader[4]) + " " +
                                   String.Format("{0}", reader[2]) + " "+ 
@@ -47,7 +48,7 @@ namespace Query1.net
             }
             conexion.Close();
             reloj.Stop();
-            Console.WriteLine($"Thread : {threadid} Tiempo: {reloj.Elapsed.TotalMilliseconds} ms");
+            Console.WriteLine($"Tiempo: {reloj.Elapsed.Milliseconds} ms");
         }
     }
 }

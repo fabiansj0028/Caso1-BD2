@@ -13,7 +13,7 @@ public class thread extends Thread {
         this.idCanton = id;
     }
     public void run() {  
-        long inicio = System.currentTimeMillis();
+        
         try(PreparedStatement pstmt = this.connection.prepareStatement("{call dbo.getEntregables(?)}"); ) {  
 
             pstmt.setInt(1, this.idCanton);  
@@ -28,13 +28,13 @@ public class thread extends Thread {
                 System.out.println("KpiType: "+ rs.getString("kpitype"));
                 System.out.println();  
             }
+            
              
         }
         catch (Exception e) {
             System.out.println();
             e.printStackTrace();
         }
-        long fin  = System.currentTimeMillis();
-        System.out.println(fin-inicio+"ms.");
+        
     }
 }

@@ -459,11 +459,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\fabia\\source\\repos\\Query1.net\\Query1.net\\Query1.net.csproj",
+      "projectUniqueName": "C:\\Users\\fabia\\Documents\\GitHub\\Caso1-BD2\\Query.net\\Query1.net\\Query1.net.csproj",
       "projectName": "Query1.net",
-      "projectPath": "C:\\Users\\fabia\\source\\repos\\Query1.net\\Query1.net\\Query1.net.csproj",
+      "projectPath": "C:\\Users\\fabia\\Documents\\GitHub\\Caso1-BD2\\Query.net\\Query1.net\\Query1.net.csproj",
       "packagesPath": "C:\\Users\\fabia\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\fabia\\source\\repos\\Query1.net\\Query1.net\\obj\\",
+      "outputPath": "C:\\Users\\fabia\\Documents\\GitHub\\Caso1-BD2\\Query.net\\Query1.net\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\fabia\\AppData\\Roaming\\NuGet\\NuGet.Config",
