@@ -13,10 +13,17 @@ public class thread extends Thread {
         this.idCanton = id;
     }
     public void run() {  
+
+        //Inicia el cronometro
         long inicio = System.currentTimeMillis();
+
+        //Statement para llamar al Store Procedure
         try(PreparedStatement pstmt = this.connection.prepareStatement("{call dbo.getEntregables(?)}"); ) {  
 
+            //Parametro para el Store Procedure
             pstmt.setInt(1, this.idCanton);  
+
+            //Ejecución del Store Procedure
             ResultSet rs = pstmt.executeQuery();  
     
             while (rs.next()) { 

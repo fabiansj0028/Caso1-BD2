@@ -16,6 +16,7 @@ namespace Query1.net
 
         public void ComenzarQuery(int[] array)
         {
+            // Se crean 10 hilos y llaman al metodo pasandole el cantón
             for (int i = 0; i < 10; i++)
             {
                 Thread hilo = new Thread(Query1.Metodo);
@@ -25,18 +26,21 @@ namespace Query1.net
 
         public static void Metodo(Object data)
         {
+            //Creacion del stopwatch para medir los ms
             Stopwatch reloj = new Stopwatch();
             reloj.Start();
-            SqlConnection conexion = new SqlConnection("Data Source = localhost; Initial Catalog = Aseni; user = sa; password = 1234");
-            
-            SqlCommand cmd1 = new SqlCommand();
-            cmd1.CommandType = CommandType.StoredProcedure;
-            cmd1.CommandText = "dbo.getEntregables";
-            cmd1.Connection = conexion;
-            cmd1.Parameters.Add("@Canton", SqlDbType.Int).Value = Convert.ToInt32(data);
 
-            conexion.Open();
-            SqlDataReader reader = cmd1.ExecuteReader();
+            //Se crea la conexion con el driver de .net
+            SqlConnection conexion = new SqlConnection("Data Source = localhost; Initial Catalog = Aseni; user = sa; password = 1234");
+            //Se crea un comando para enviar a la base de datos
+            SqlCommand cmd1 = new SqlCommand();
+            cmd1.CommandType = CommandType.StoredProcedure; // Se asigna al comando tipo Store Procedure
+            cmd1.CommandText = "dbo.getEntregables"; // Nombre del Store Procedure
+            cmd1.Connection = conexion; // Se le agrega la conexion al comando
+            cmd1.Parameters.Add("@Canton", SqlDbType.Int).Value = Convert.ToInt32(data); // Se le envia el parametro al store procedure
+
+            conexion.Open(); // Se abre la conexion
+            SqlDataReader reader = cmd1.ExecuteReader(); // Lector del resultado
             while (reader.Read())
             {
                 Console.WriteLine("Canton: " + Convert.ToInt32(data) + " " +
@@ -46,7 +50,7 @@ namespace Query1.net
                                   String.Format("{0}", reader[2]) + " "+ 
                                   String.Format("{0}", reader[1]));
             }
-            conexion.Close();
+            conexion.Close(); // Se cierra la conexión
             reloj.Stop();
             Console.WriteLine($"Tiempo: {reloj.Elapsed.Milliseconds} ms");
         }
